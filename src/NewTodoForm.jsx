@@ -1,16 +1,14 @@
 import { useState } from "react";
 
-export default function NewTodoForm() {
+// eslint-disable-next-line react/prop-types
+export default function NewTodoForm({ onSubmit }) {
   const [newItem, setNewItem] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    // setTodos(currentTodos => {
-    //   return [
-    //     ...currentTodos,
-    //     {id: crypto.randomUUID(), title: newItem, completed: false},
-    //   ]
-    // })
+    if (newItem === "") return;
+
+    onSubmit(newItem);
 
     setNewItem("");
   }
